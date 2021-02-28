@@ -1,8 +1,11 @@
 export interface ISearchMovieResponse {
-    Response: string;
-    Search: Array<IMovie>;
-    totalResult: string;
+    Response: ResponseType;
+    Search?: Array<IMovie>;
+    totalResult?: string;
+    Error?: string;
 }
+
+export type ResponseType = 'True' | 'False' | string;
 
 export interface IMovie {
     Poster: string;
@@ -12,4 +15,4 @@ export interface IMovie {
     imdbID: string;
 }
 
-export type MovieType = 'movie' | 'series' | 'episode';
+export type MovieType = 'movie' | 'series' | 'episode' | string;

@@ -1,27 +1,12 @@
-import styled from 'styled-components';
 import { IMovie } from '../interfaces/Movie.interface';
+import { StyledMovieWrapper, StyledMovieTitle } from './MovieCard.styled';
 
 interface IProps {
     movie: IMovie;
 }
 
-const StyledMovieWrapper = styled.figure`
-    margin: 10px 20px;
-    display: flex;
-    flex-direction: column;
-    max-width: 300px;
-`;
-
-const StyledMovieTitle = styled.figcaption`
-    font-size: 1.3rem;
-    text-align: center;
-    font-weight: bold;
-    margin-top: 10px;
-    font-style: italic;
-`;
-
 export const MovieCard = ({ movie }: IProps) => (
-    <StyledMovieWrapper>
+    <StyledMovieWrapper data-testid="movie-card">
         <img
             key={movie.imdbID}
             src={movie.Poster}
