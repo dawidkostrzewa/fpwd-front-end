@@ -1,36 +1,36 @@
 on:
-  push:
-    branches:
-      - main
-name: Release on Prod 
+    push:
+        branches:
+            - main
+name: Release on Prod
 jobs:
-  Deploy-to-prod:
-    name: Deploy to Prod
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@master
-      with:
-        fetch-depth: 2
+    Deploy-to-prod:
+        name: Deploy to Prod
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@master
+              with:
+                  fetch-depth: 2
 
-    - name: Use Node.js 14.x
-      uses: actions/setup-node@v1
-      with:
-        node-version: '14.x'
+            - name: Use Node.js 14.x
+              uses: actions/setup-node@v1
+              with:
+                  node-version: '14.x'
 
-    - name: Build Project
-      run: |
-        npm install
-        npm run build --if-present
-    - name: List output files
-      run: ls
-    -name: Tests
-      run: npm run test  
+            - name: Build Project
+              run: |
+                  npm install
+                  npm run build --if-present
+            - name: List output files
+              run: ls
+            - name: Tests
+              run: npm run test
 
-    - name: Deploy to Prod
-      uses: SamKirkland/FTP-Deploy-Action@4.0.0
-      with:
-        server: ${{ secrets.FTP_SERVER }}
-        username: ${{ secrets.FTP_USERNAME }}
-        password: ${{ secrets.FTP_PASSWORD }}
-        local-dir: build/
-        server-dir: ${{ secrets.FTP_PATH }}
+            - name: Deploy to Prod
+              uses: SamKirkland/FTP-Deploy-Action@4.0.0
+              with:
+                  server: ${{ secrets.FTP_SERVER }}
+                  username: ${{ secrets.FTP_USERNAME }}
+                  password: ${{ secrets.FTP_PASSWORD }}
+                  local-dir: build/
+                  server-dir: ${{ secrets.FTP_PATH }}
