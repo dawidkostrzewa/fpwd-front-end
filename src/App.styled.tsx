@@ -11,7 +11,7 @@ export const StyledContainer = styled.div`
     margin: 0 auto;
 
     @media (max-width: 992px) {
-        max-width: 90%fit-content;
+        max-width: 90%;
     }
 `;
 
@@ -19,13 +19,16 @@ export const StyledSearchInput = styled.input`
     border: none;
     font-size: 2.5rem;
     padding: 10px;
-    min-height: 70px;
     border-bottom: 1px solid grey;
 
     &:focus {
         border-bottom: 2px solid black;
-
         outline: none;
+    }
+
+    @media (max-width: 992px) {
+        max-width: 90%;
+        font-size: 1.8rem;
     }
 `;
 
